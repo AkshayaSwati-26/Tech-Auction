@@ -25,7 +25,7 @@ Postgres (Railway and Render both offer one-click Postgres add-ons).
 
 Both auto-detect a Node app from `package.json`. In `server/`:
 
-- **Build command**: `npm install && npm run build`
+- **Build command**: `npm install --include=dev && npm run build` (the `--include=dev` matters: with `NODE_ENV=production` set, a plain `npm install` skips the TypeScript type packages the build needs)
 - **Start command**: `npm start`
 
 Environment variables to set on the backend service:
