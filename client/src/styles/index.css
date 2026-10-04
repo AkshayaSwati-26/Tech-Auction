@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== MIDNIGHT EDITORIAL GLASS tokens — see STYLE_GUIDE.md ===== */
+:root {
+  --bg: #05030d;
+  --panel: #0e0b1c;
+  --glow: #1b0f3d;
+  --text: #f8f5ff;
+  --secondary: #b9aedb;
+  --muted: #7f76a3;
+  --violet: #8b5cf6;
+  --violet-bright: #a78bfa;
+  --gold: #e8c277;
+  --silver: #cfc6f0;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --card-fill: rgba(255, 255, 255, 0.04);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Sora", ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: "Sora", ui-sans-serif, system-ui;
+  font-weight: 600;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gold = money and rank 1. Flat colour, no glow. */
+.text-gold-gradient {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-chrome-gradient {
+  background: linear-gradient(180deg, #ffffff, #cfc6f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-violet-gradient {
+  color: var(--violet-bright);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #1a1305;
+  transition: filter 0.3s var(--ease);
+}
+.btn-gold:hover {
+  filter: brightness(1.07);
+}
+
+.btn-violet {
+  background: linear-gradient(135deg, var(--violet), var(--violet-bright));
+  color: #0b0618;
+  transition: filter 0.3s var(--ease);
+}
+.btn-violet:hover {
+  filter: brightness(1.08);
+}
+
+/* The one card style: faint fill, hairline border, soft top inner highlight. */
+.glass-panel {
+  background: var(--card-fill);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Admin: every control is at least a 44px touch target. */
+.admin button,
+.admin a[href],
+.admin input:not([type="checkbox"]):not([type="radio"]),
+.admin select {
+  min-height: 44px;
+}
+.admin button:focus-visible,
+.admin a:focus-visible,
+.admin input:focus-visible,
+.admin select:focus-visible {
+  outline: 2px solid var(--violet-bright);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2444;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
